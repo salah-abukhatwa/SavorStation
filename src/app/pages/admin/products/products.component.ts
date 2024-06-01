@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../../services/product/product.service';
+import { FirestoreModule } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule , FirestoreModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
 })
@@ -34,18 +35,22 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.getAllCategory();
     this.getProducts();
+    
+  }
+  getAllCategory() {
+    this.productService.getCategory().subscribe((res: any) => {
+      this.categoryList = res;
+      console.log(this.categoryList)
+     
+    });
   }
 
   getProducts() {
     this.productService.getProducts().subscribe((res: any) => {
-      this.productList = res.data;
+      this.productList = res;
     });
   }
-  getAllCategory() {
-    this.productService.getCategory().subscribe((res: any) => {
-      this.categoryList = res.data;
-    });
-  }
+
 
   openSidePanale() {
     this.isSidePanelVisible = true;
@@ -77,7 +82,7 @@ export class ProductsComponent implements OnInit {
         alert(res.message);
       }
     });
-    // console.log(this.productObj);
+    
   }
 
   onEdit(item:any){
@@ -89,7 +94,7 @@ export class ProductsComponent implements OnInit {
     if (isDelete) {
       
       this.productService.deleteProduct(item.productId).subscribe((res: any) => {
-        console.log(item.productId)
+        
         
         if (res.result) {
           alert('Product deleted');
