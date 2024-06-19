@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-6">Product List</div>
           <div class="col-6 text-end">
-            <button class="btn btn-sm btn-success" (click)="openSidePanale()">
+            <button class="btn btn-sm btn-success" (click)="openSidePanel()">
               New
             </button>
           </div>
@@ -13,20 +13,22 @@
       </div>
       <div class="card-body">
         <div class="row">
-          <div class="col-4" *ngFor="let product of productList">
-            <div class="card" style="width: 18rem">
+          <div class="col-4 mb-3" *ngFor="let product of productList">
+            <div class="card" style="height: 100%">
               <img
                 [src]="product.productImageUrl"
-                class="card-img-top"
-                alt="..."
+                class="card-img-top product-image"
+                alt="Card Image"
               />
               <div class="card-body">
                 <h5 class="card-title">{{ product.productName }}</h5>
                 <p class="card-text">
                   {{ product.categoryName }}
                 </p>
-                <a  class="btn btn-primary" (click)="onEdit(product)">Edit</a>
-                <a  class="btn btn-danger mx-2" (click)="onDelete(product)">Delete</a>
+                <a class="btn btn-primary" (click)="onEdit(product)">Edit</a>
+                <a class="btn btn-danger mx-2" (click)="onDelete(product)"
+                  >Delete</a
+                >
               </div>
             </div>
           </div>
@@ -40,7 +42,7 @@
         <div class="row">
           <div class="col-6">New Product</div>
           <div class="col-6 text-end">
-            <button class="btn btn-sm btn-success" (click)="closeSidePanale()">
+            <button class="btn btn-sm btn-success" (click)="closeSidePanel()">
               Close
             </button>
           </div>
@@ -86,16 +88,16 @@
         <div class="row">
           <div class="col-6">
             <label for="">Category</label>
-            <select [(ngModel)]="productObj.categoryId" class="form-select">
+            <select [(ngModel)]="productObj.categoryName" class="form-select">
               <option
                 *ngFor="let category of categoryList"
-                [value]="category.categoryId"
+                [value]="category.categoryName"
               >
                 {{ category.categoryName }}
               </option>
             </select>
             <!-- <input
-              type="text"
+              type="text"sa
               [(ngModel)]="productObj.categoryId"
               class="form-control"
             /> -->
@@ -127,15 +129,24 @@
             />
           </div>
         </div>
-        <div class="row">
-          <div class="col-6">
-            <button class="btn btn-success">Reset</button>
+        <div class="row pt-2">
+          <div class="col-6 text-center">
+            <button class="btn btn-success" (click)="resetForm()">Reset</button>
           </div>
-          <div class="col-6">
-            <button class="btn btn-success" *ngIf="productObj.productId == 0" (click)="onSave()">
-              Creat product
+          <div class="col-6 text-center">
+            <button
+              class="btn btn-success"
+              *ngIf="productObj.productId == 0"
+              (click)="onSave()"
+            >
+              Create product
             </button>
-            <button class="btn btn-success"  *ngIf="productObj.productId !== 0" (click)="onUpdatae()">
+
+            <button
+              class="btn btn-primary"
+              *ngIf="productObj.productId !== 0"
+              (click)="onUpdate()"
+            >
               Update product
             </button>
           </div>

@@ -1,3 +1,8 @@
 /* .card-header {
   background-color: var(--navbar-color);
 } */
+.product-image {
+  width: 100%; /* Make image take up the full width of its container */
+  height: 200px; /* Set a fixed height */
+  object-fit: cover; /* Scale image to cover the element's content box */
+}
