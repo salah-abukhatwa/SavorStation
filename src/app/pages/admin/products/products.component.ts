@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../../services/product/product.service';
 import { FirestoreModule } from '@angular/fire/firestore';
+import { Product } from '../../../models/product.model';
 
 @Component({
   selector: 'app-products',
@@ -14,7 +15,7 @@ import { FirestoreModule } from '@angular/fire/firestore';
 export class ProductsComponent implements OnInit {
   isSidePanelVisible: boolean = false;
 
-  productObj: any = {
+  productObj: Product = {
     productId: 0,
     productSku: '',
     productName: '',
@@ -28,7 +29,7 @@ export class ProductsComponent implements OnInit {
   };
 
   categoryList: any[] = [];
-  productList: any[] = [];
+  productList: Product[] = [];
 
   constructor(private productService: ProductService) {}
 
