@@ -36,9 +36,12 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li *ngFor="let category of categoryList">
-                <a class="dropdown-item" href="#">{{
-                  category.categoryName
-                }}</a>
+                <a
+                  class="dropdown-item"
+                  (click)="navigateToProd(category.categoryId)"
+                >
+                  {{ category.categoryName }}</a
+                >
               </li>
             </ul>
           </li>
@@ -87,10 +90,9 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <i
-                class="fa fa-cart-shopping fs-5 me-1"
-                style="color: #202122"
-              ></i>
+              <i class="fa fa-cart-shopping fs-5 me-1" style="color: #202122"
+                >22</i
+              >
             </a>
             <ul
               class="dropdown-menu menuOnLeft rounded-0 mt-2"
@@ -193,6 +195,7 @@
                     data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasRight"
                     aria-controls="offcanvasRight"
+                    routerLink="/login"
                   >
                     <button class="btn btn-danger rounded-0 px-3">
                       Login
@@ -219,46 +222,4 @@
     </div>
   </nav>
 </header>
-<div class="container-fluid py-5">
-  <div class="container py-5">
-    <div class="text-center mx-auto mb-5" style="max-width: 700px">
-      <h1 class="display-4">Bestseller Products</h1>
-      <p>
-        Latin words, combined with a handful of model sentence structures, to
-        generate Lorem Ipsum which looks reasonable.
-      </p>
-    </div>
-    <div class="row g-4">
-      <div class="col-lg-6 col-xl-4" *ngFor="let product of productList">
-        <div class="p-4 rounded bg-light">
-          <div class="row align-items-center">
-            <div class="col-6">
-              <img
-                [src]="product.productImageUrl"
-                class="img-fluid rounded-circle w-100"
-                alt=""
-              />
-            </div>
-            <div class="col-6">
-              <a href="#" class="h5">{{ product.productShortName }}</a>
-              <div class="d-flex my-3">
-                <i class="fas fa-star text-primary"></i>
-                <i class="fas fa-star text-primary"></i>
-                <i class="fas fa-star text-primary"></i>
-                <i class="fas fa-star text-primary"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4 class="mb-3">{{ product.productPrice }} $</h4>
-              <a
-                href="#"
-                class="btn border border-secondary rounded-pill px-3 text-primary"
-                ><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-                cart</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<router-outlet></router-outlet>

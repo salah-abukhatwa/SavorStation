@@ -1,5 +1,5 @@
 export interface Product {
-  productId: number;
+  productId: string;
   productSku: string;
   productName: string;
   productPrice: number;
@@ -8,5 +8,6 @@ export interface Product {
   createdDate: Date;
   deliveryTimeSpan: string;
   categoryName: string;
+  categoryId: number;
   productImageUrl: string;
 }

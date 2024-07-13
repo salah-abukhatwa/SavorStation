@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../../services/product/product.service';
-import { Product } from '../../../models/product.model';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { Product } from '../../../models/product.model';
 import { Category } from '../../../models/category.model';
+import { ProductService } from '../../../services/product/product.service';
 
 @Component({
-  selector: 'app-landing',
+  selector: 'app-web-products',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterOutlet],
-  templateUrl: './landing.component.html',
-  styleUrl: './landing.component.css',
+  imports: [CommonModule, RouterLink],
+  templateUrl: './web-products.component.html',
+  styleUrl: './web-products.component.css',
 })
-export class LandingComponent implements OnInit {
+export class WebProductsComponent {
   productList: Product[] = [];
   categoryList: Category[] = [];
   constructor(private productService: ProductService, private router: Router) {}
@@ -31,8 +31,5 @@ export class LandingComponent implements OnInit {
     this.productService.getProducts().subscribe((res: Product[]) => {
       this.productList = res;
     });
-  }
-  navigateToProd(id: number) {
-    this.router.navigate(['/products', id]);
   }
 }

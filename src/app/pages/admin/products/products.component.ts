@@ -16,7 +16,7 @@ export class ProductsComponent implements OnInit {
   isSidePanelVisible: boolean = false;
 
   productObj: Product = {
-    productId: 0,
+    productId: '',
     productSku: '',
     productName: '',
     productPrice: 0,
@@ -25,6 +25,7 @@ export class ProductsComponent implements OnInit {
     createdDate: new Date(),
     deliveryTimeSpan: '',
     categoryName: '',
+    categoryId: 0,
     productImageUrl: '',
   };
 
@@ -106,7 +107,7 @@ export class ProductsComponent implements OnInit {
 
   resetForm() {
     this.productObj = {
-      productId: 0,
+      productId: '',
       productSku: '',
       productName: '',
       productPrice: 0,
@@ -115,6 +116,7 @@ export class ProductsComponent implements OnInit {
       createdDate: new Date(),
       deliveryTimeSpan: '',
       categoryName: '',
+      categoryId: 0,
       productImageUrl: '',
     };
   }

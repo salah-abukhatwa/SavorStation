@@ -2,15 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import {
   Firestore,
-  addDoc,
-  collectionData,
   collection,
-  doc,
-  setDoc,
-  updateDoc,
+  query,
+  where,
+  collectionData,
   deleteDoc,
+  doc,
+  updateDoc,
+  setDoc,
+  getDocs,
 } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, from, map } from 'rxjs';
+import { Product } from '../../models/product.model';
+import { Category } from '../../models/category.model';
+import { Console } from 'console';
 
 @Injectable({
   providedIn: 'root',
@@ -22,10 +27,11 @@ export class ProductService implements OnInit {
 
   category = collectionData(
     collection(this.firestore, 'category')
-  ) as Observable<any[]>;
+  ) as Observable<Category[]>;
+
   products = collectionData(
     collection(this.firestore, 'product')
-  ) as Observable<any[]>;
+  ) as Observable<Product[]>;
 
   getCategory() {
     return this.category;
@@ -50,5 +56,18 @@ export class ProductService implements OnInit {
   deleteProduct(productId: string) {
     const productDocRef = doc(this.firestore, `product/${productId}`);
     return deleteDoc(productDocRef);
+  }
+
+  getProductsByCategory(categoryId: number): Observable<Product[]> {
+    const productRef = collection(this.firestore, 'product');
+    const q = query(productRef, where('categoryId', '==', categoryId));
+    return from(getDocs(q)).pipe(
+      map((querySnapshot) =>
+        querySnapshot.docs.map((doc) => {
+          const data = doc.data() as Product;
+          return { ...data, productId: doc.id };
+        })
+      )
+    );
   }
 }

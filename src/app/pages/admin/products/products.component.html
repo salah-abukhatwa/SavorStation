@@ -136,7 +136,7 @@
           <div class="col-6 text-center">
             <button
               class="btn btn-success"
-              *ngIf="productObj.productId == 0"
+              *ngIf="productObj.productId == ''"
               (click)="onSave()"
             >
               Create product
@@ -144,7 +144,7 @@
 
             <button
               class="btn btn-primary"
-              *ngIf="productObj.productId !== 0"
+              *ngIf="productObj.productId !== ''"
               (click)="onUpdate()"
             >
               Update product
