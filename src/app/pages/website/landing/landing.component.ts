@@ -4,6 +4,7 @@ import { Product } from '../../../models/product.model';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { Category } from '../../../models/category.model';
+import { AuthService } from '../../admin/auth/auth.service';
 
 @Component({
   selector: 'app-landing',
@@ -15,24 +16,39 @@ import { Category } from '../../../models/category.model';
 export class LandingComponent implements OnInit {
   productList: Product[] = [];
   categoryList: Category[] = [];
-  constructor(private productService: ProductService, private router: Router) {}
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    private authService: AuthService
+  ) {}
   ngOnInit(): void {
     this.getProducts();
     this.getAllCategory();
   }
 
   getAllCategory() {
-    this.productService.getCategory().subscribe((res) => {
-      this.categoryList = res;
-    });
+    this.productService.getCategory().subscribe(
+      (res) => {
+        this.categoryList = res;
+      },
+      (error) => {}
+    );
   }
 
   getProducts(categoryId?: any) {
-    this.productService.getProducts().subscribe((res: Product[]) => {
-      this.productList = res;
-    });
+    this.productService.getProducts().subscribe(
+      (res: Product[]) => {
+        this.productList = res;
+      },
+      (error) => {}
+    );
   }
   navigateToProd(id: number) {
     this.router.navigate(['/products', id]);
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigateByUrl('/login');
   }
 }

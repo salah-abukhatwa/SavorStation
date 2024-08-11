@@ -12,7 +12,7 @@ import {
   setDoc,
   getDocs,
 } from '@angular/fire/firestore';
-import { Observable, from, map } from 'rxjs';
+import { Observable, Subscription, from, map } from 'rxjs';
 import { Product } from '../../models/product.model';
 import { Category } from '../../models/category.model';
 import { Console } from 'console';

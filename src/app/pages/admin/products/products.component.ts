@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../../services/product/product.service';
 import { FirestoreModule } from '@angular/fire/firestore';
 import { Product } from '../../../models/product.model';
+import { error } from 'console';
 
 @Component({
   selector: 'app-products',
@@ -40,15 +41,21 @@ export class ProductsComponent implements OnInit {
   }
 
   getAllCategory() {
-    this.productService.getCategory().subscribe((res: any) => {
-      this.categoryList = res;
-    });
+    this.productService.getCategory().subscribe(
+      (res: any) => {
+        this.categoryList = res;
+      },
+      (error) => {}
+    );
   }
 
   getProducts() {
-    this.productService.getProducts().subscribe((res: any) => {
-      this.productList = res;
-    });
+    this.productService.getProducts().subscribe(
+      (res: any) => {
+        this.productList = res;
+      },
+      (error) => {}
+    );
   }
 
   openSidePanel() {

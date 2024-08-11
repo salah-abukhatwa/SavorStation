@@ -22,14 +22,20 @@ export class WebProductsComponent {
   }
 
   getAllCategory() {
-    this.productService.getCategory().subscribe((res) => {
-      this.categoryList = res;
-    });
+    this.productService.getCategory().subscribe(
+      (res) => {
+        this.categoryList = res;
+      },
+      (error) => {}
+    );
   }
 
   getProducts(categoryId?: any) {
-    this.productService.getProducts().subscribe((res: Product[]) => {
-      this.productList = res;
-    });
+    this.productService.getProducts().subscribe(
+      (res: Product[]) => {
+        this.productList = res;
+      },
+      (error) => {}
+    );
   }
 }
