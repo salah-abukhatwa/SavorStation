@@ -16,7 +16,7 @@
   align-items: center;
 
   min-height: 100vh;
-  background-image: url(../image/pexels-photo-8939514.webp);
+  background-image: url(../../../../../assets/image/pexels-n-voitkevich-8939514.jpg);
 
   background-size: cover;
 
@@ -38,7 +38,7 @@
 
   padding: 30px 40px;
 
-  display: none;
+  display: block;
 }
 
 .wrapper h1 {
@@ -97,12 +97,10 @@
 
 .wrapper .checkbox1 {
   display: flex;
-
+  margin-top: 10px;
   justify-content: space-between;
 
   font-size: 14.5px;
-
-  margin: -15px 0 15px;
 }
 
 .checkbox1 label input {
@@ -145,6 +143,7 @@
   color: #333;
 
   font-weight: 600;
+  margin-top: 20px;
 }
 
 .wrapper .link {
@@ -156,7 +155,7 @@
 }
 
 .link p a {
-  color: #fff;
+  color: #aa9139;
 
   text-decoration: none;
 
@@ -167,12 +166,22 @@
   text-decoration: underline;
 }
 
-#loginForm:checked ~ #loginFormContent,
-#registerForm:checked ~ #registerFormContent,
-#forgotForm:checked ~ #forgotFormContent {
-  display: block;
-}
-
 input[type="radio"] {
   display: none;
+}
+
+.validation-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.input-box {
+  position: relative;
+  margin-bottom: 45px; /* Adjust as needed to ensure space for validation messages */
+}
+
+.checkbox1 {
+  margin-top: 15px; /* Provide additional space if needed */
 }

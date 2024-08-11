@@ -1,0 +1,92 @@
+<div class="parent">
+  <div class="wrapper">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+      <h1>Login</h1>
+
+      <div class="input-box">
+        <input
+          type="email"
+          placeholder="Your email"
+          formControlName="email"
+          type="text"
+          required
+          matInput
+          (blur)="loginForm.get('email')?.markAsTouched()"
+        />
+        <div
+          *ngIf="
+            loginForm.get('email')?.touched &&
+            loginForm.get('email')?.hasError('required')
+          "
+          class="validation-message"
+        >
+          Field must not be empty
+        </div>
+        <div
+          *ngIf="
+            loginForm.get('email')?.touched &&
+            loginForm.get('email')?.hasError('email')
+          "
+          class="validation-message"
+        >
+          Please enter a valid email address
+        </div>
+      </div>
+
+      <div class="input-box">
+        <input
+          placeholder="Your password"
+          formControlName="password"
+          required
+          (blur)="loginForm.get('password')?.markAsTouched()"
+        />
+        <div
+          *ngIf="
+            loginForm.get('password')?.touched &&
+            loginForm.get('password')?.hasError('required')
+          "
+          class="validation-message"
+        >
+          Field must not be empty
+        </div>
+        <div
+          *ngIf="
+            loginForm.get('password')?.touched &&
+            loginForm.get('password')?.hasError('minlength')
+          "
+          class="validation-message"
+        >
+          Password must be at least 6 characters
+        </div>
+      </div>
+
+      <div class="checkbox1">
+        <label><input type="checkbox" />Remember Me</label>
+      </div>
+
+      <button
+        type="button"
+        type="submit"
+        [disabled]="loginForm.invalid"
+        class="btn"
+        *ngIf="!isLoading"
+      >
+        Login
+      </button>
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
+
+      <div class="link">
+        <p>
+          Don't have an account?
+          <a routerLink="/signup">Register</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
+
+<a routerLink="/signup">Register</a>
+<mat-spinner *ngIf="isLoading"></mat-spinner>

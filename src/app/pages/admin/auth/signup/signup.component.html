@@ -1,0 +1,103 @@
+<div class="parent">
+  <div class="wrapper">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+      <h1>Register</h1>
+
+      <div class="input-box">
+        <input
+          type="username"
+          placeholder="Username"
+          formControlName="username"
+          (blur)="form.get('username')?.markAsTouched()"
+        />
+        <div
+          *ngIf="
+            form.get('username')?.touched &&
+            form.get('username')?.hasError('required')
+          "
+          class="validation-message"
+        >
+          Field must not be empty
+        </div>
+      </div>
+
+      <div class="input-box">
+        <input
+          type="email"
+          placeholder="Your email"
+          formControlName="email"
+          required
+          (blur)="form.get('email')?.markAsTouched()"
+        />
+        <div
+          *ngIf="
+            form.get('email')?.touched &&
+            form.get('email')?.hasError('required')
+          "
+          class="validation-message"
+        >
+          Field must not be empty
+        </div>
+        <div
+          *ngIf="
+            form.get('email')?.touched && form.get('email')?.hasError('email')
+          "
+          class="validation-message"
+        >
+          Please enter a valid email address
+        </div>
+      </div>
+
+      <div class="input-box">
+        <input
+          placeholder="Your password"
+          formControlName="password"
+          required
+          (blur)="form.get('password')?.markAsTouched()"
+        />
+        <div
+          *ngIf="
+            form.get('password')?.touched &&
+            form.get('password')?.hasError('required')
+          "
+          class="validation-message"
+        >
+          Field must not be empty
+        </div>
+        <div
+          *ngIf="
+            form.get('password')?.touched &&
+            form.get('password')?.hasError('minlength')
+          "
+          class="validation-message"
+        >
+          Password must be at least 6 characters
+        </div>
+      </div>
+
+      <div class="checkbox1">
+        <label
+          ><input type="checkbox" required />I agree to terms &
+          conditions</label
+        >
+      </div>
+
+      <button
+        *ngIf="!isLoading"
+        type="submit"
+        class="btn"
+        [disabled]="form.invalid"
+      >
+        Register
+      </button>
+
+      <div class="link">
+        <p>Already have an account? <a routerLink="/login">Login</a></p>
+      </div>
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
+    </form>
+  </div>
+</div>
