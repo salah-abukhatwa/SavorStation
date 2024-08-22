@@ -13,7 +13,7 @@
       </div>
       <div class="card-body">
         <div class="row">
-          <div class="col-4 mb-3" *ngFor="let product of productList">
+          <div class="col-lg-6 col-xl-4" *ngFor="let product of productList">
             <div class="card" style="height: 100%">
               <img
                 [src]="product.productImageUrl"
@@ -81,6 +81,7 @@
             <input
               type="text"
               [(ngModel)]="productObj.productPrice"
+              (ngModelChange)="productObj.productPrice = +$event"
               class="form-control"
             />
           </div>
@@ -88,25 +89,25 @@
         <div class="row">
           <div class="col-6">
             <label for="">Category</label>
-            <select [(ngModel)]="productObj.categoryName" class="form-select">
+            <select
+              [(ngModel)]="productObj.categoryId"
+              (ngModelChange)="productObj.categoryId = +$event"
+              class="form-select"
+            >
               <option
                 *ngFor="let category of categoryList"
-                [value]="category.categoryName"
+                [value]="category.categoryId"
               >
                 {{ category.categoryName }}
               </option>
             </select>
-            <!-- <input
-              type="text"sa
-              [(ngModel)]="productObj.categoryId"
-              class="form-control"
-            /> -->
           </div>
           <div class="col-6">
             <label for="">Delivery Time Span</label>
             <input
-              type="text"
+              type="number"
               [(ngModel)]="productObj.deliveryTimeSpan"
+              (ngModelChange)="productObj.deliveryTimeSpan = +$event"
               class="form-control"
             />
           </div>

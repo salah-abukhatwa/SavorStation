@@ -15,22 +15,16 @@ import { AuthService } from './pages/admin/auth/auth.service';
   standalone: true,
   imports: [CommonModule, RouterOutlet, FirestoreModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
   title = 'SavorStation';
   constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
-    this.auth.user$.subscribe((user) => {
-      if (user) {
-        this.auth.currentUserSig.set({
-          email: user.email!,
-          username: user.displayName!,
-        });
-      } else {
-        this.auth.currentUserSig.set(null);
-      }
-    });
+    // This will trigger the authChange Subject if the user is already authenticated
+    if (this.auth.isAuth()) {
+      this.auth.authChange.next(true);
+    }
   }
 }

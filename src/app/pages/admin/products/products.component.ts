@@ -5,6 +5,7 @@ import { ProductService } from '../../../services/product/product.service';
 import { FirestoreModule } from '@angular/fire/firestore';
 import { Product } from '../../../models/product.model';
 import { error } from 'console';
+import { Category } from '../../../models/category.model';
 
 @Component({
   selector: 'app-products',
@@ -24,13 +25,13 @@ export class ProductsComponent implements OnInit {
     productShortName: '',
     productDescription: '',
     createdDate: new Date(),
-    deliveryTimeSpan: '',
+    deliveryTimeSpan: 0,
     categoryName: '',
     categoryId: 0,
     productImageUrl: '',
   };
 
-  categoryList: any[] = [];
+  categoryList: Category[] = [];
   productList: Product[] = [];
 
   constructor(private productService: ProductService) {}
@@ -121,7 +122,7 @@ export class ProductsComponent implements OnInit {
       productShortName: '',
       productDescription: '',
       createdDate: new Date(),
-      deliveryTimeSpan: '',
+      deliveryTimeSpan: 0,
       categoryName: '',
       categoryId: 0,
       productImageUrl: '',

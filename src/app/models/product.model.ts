@@ -6,7 +6,7 @@ export interface Product {
   productShortName: string;
   productDescription: string;
   createdDate: Date;
-  deliveryTimeSpan: string;
+  deliveryTimeSpan: number;
   categoryName: string;
   categoryId: number;
   productImageUrl: string;
