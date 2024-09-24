@@ -7,6 +7,8 @@ import {
   signOut,
   updateProfile,
   user,
+  setPersistence,
+  browserSessionPersistence,
 } from '@angular/fire/auth';
 import { User } from './user.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -23,18 +25,35 @@ export class AuthService {
     private uiService: UiService,
     private fbAuth: Auth,
     private snackBar: MatSnackBar
-  ) {
-    this.checkAuthStatus();
-  }
+  ) {}
 
   user$ = user(this.fbAuth);
   currentUserSig = signal<User | null | undefined>(undefined);
 
+  // Set expiration time (e.g., 1 day in milliseconds)
+  private expirationTime = 5 * 60 * 60 * 1000; // 1 day
+
+  initializeAuthState(): Promise<void> {
+    return new Promise((resolve) => {
+      this.checkAuthStatus();
+      resolve();
+    });
+  }
+
   private checkAuthStatus(): void {
     if (typeof localStorage !== 'undefined') {
-      this.isAuthenticated = !!localStorage.getItem('isAuthenticated');
-      if (this.isAuthenticated) {
-        this.authChange.next(true);
+      const authTime = JSON.parse(localStorage.getItem('authTime') || '0');
+      const currentTime = new Date().getTime();
+
+      // Check if the session has expired
+      if (currentTime - authTime > this.expirationTime) {
+        this.logout(); // If expired, log the user out
+      } else {
+        // If not expired, update auth status based on localStorage
+        this.isAuthenticated = !!localStorage.getItem('isAuthenticated');
+        if (this.isAuthenticated) {
+          this.authChange.next(true);
+        }
       }
     }
   }
@@ -83,13 +102,18 @@ export class AuthService {
     return this.isAuthenticated;
   }
 
+  // Update auth status with expiration logic
   private setAuthStatus(status: boolean): void {
     this.isAuthenticated = status;
+    const currentTime = new Date().getTime();
+
     if (typeof localStorage !== 'undefined') {
       if (status) {
         localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('authTime', JSON.stringify(currentTime)); // Store the current time for session expiration
       } else {
         localStorage.removeItem('isAuthenticated');
+        localStorage.removeItem('authTime');
       }
     }
     this.authChange.next(status);

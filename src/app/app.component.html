@@ -1,1 +1,6 @@
-<router-outlet></router-outlet>
+<div *ngIf="isLoading" class="loading-overlay">
+  <div class="spinner"></div>
+</div>
+<ng-container *ngIf="!isLoading">
+  <router-outlet></router-outlet>
+</ng-container>

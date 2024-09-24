@@ -6,3 +6,11 @@
   height: 200px; /* Set a fixed height */
   object-fit: cover; /* Scale image to cover the element's content box */
 }
+
+.sticky-panel {
+  position: sticky;
+  top: 20px; /* Adjust this value to control how far from the top it stays */
+  z-index: 1000;
+  max-height: 90vh; /* Ensures it doesn't overflow */
+  overflow-y: auto; /* Adds scrolling if content is too large */
+}

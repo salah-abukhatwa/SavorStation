@@ -1,4 +1,8 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import {
+  APP_INITIALIZER,
+  ApplicationConfig,
+  importProvidersFrom,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
@@ -9,6 +13,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AuthService } from './pages/admin/auth/auth.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,6 +24,14 @@ export const appConfig: ApplicationConfig = {
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    provideAuth(() => getAuth()), provideAnimationsAsync(),
+    provideAuth(() => getAuth()),
+    provideAnimationsAsync(),
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (authService: AuthService) => () =>
+        authService.initializeAuthState(),
+      deps: [AuthService],
+      multi: true,
+    },
   ],
 };
