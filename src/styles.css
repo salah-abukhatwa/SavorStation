@@ -2,6 +2,15 @@ You can add global styles to this file,
 /* and also import other style files :root {
   --navbar-color: #edd16c;
 } */
+
+
+
+.form-floating > label {
+  margin-top: 20px; /* Assuming this was intended */
+}
+
+/* Fix nested styles */
+
 .textBlur {
   color: transparent;
   text-shadow: 0 0 1px #ffff;
@@ -10,12 +19,14 @@ You can add global styles to this file,
 .bg-primary {
   background-color: #0068d4 !important;
 }
+
 .display-4 {
   font-size: calc(1.475rem + 2.7vw) !important;
   font-weight: 800 !important;
   line-height: 1.2 !important;
   color: #0068d4 !important;
 }
+
 .navbar {
   box-shadow: none;
 }
@@ -23,6 +34,7 @@ You can add global styles to this file,
 a:hover {
   color: rgb(255, 230, 0) !important;
 }
+
 /* Home link styling */
 .home-link {
   color: rgb(255, 230, 0) !important;
@@ -34,8 +46,6 @@ a:hover {
   color: white !important;
 }
 
-/* Ensure hover states are handled correctly */
-
 .pages-link:hover,
 .contact-link:hover {
   color: rgb(255, 230, 0) !important;
@@ -45,6 +55,7 @@ a:hover {
   display: block !important;
   margin-top: 0;
 }
+
 .log_Reg_Border {
   border: 1px solid pink;
   border-radius: 20%;
@@ -64,11 +75,13 @@ a:hover {
   width: 100% !important;
   margin-top: 0% !important;
 }
+
 .featurs .featurs-item .featurs-icon {
   position: relative;
   width: 120px;
   height: 120px;
 }
+
 .bg-light {
   background-color: #f4f6f8 !important;
 }
@@ -84,19 +97,24 @@ a:hover {
   transform: rotate(45deg);
   background: var(--bs-secondary);
 }
+
 .text-primary {
   color: #0068d4 !important;
 }
+
 .px-3 {
   padding-right: 1rem !important;
   padding-left: 1rem !important;
 }
+
 .border-secondary {
   border-color: #ffb524 !important;
 }
+
 .nav-yellow {
   background-color: #0068d4 !important;
 }
+
 .menuOnLeft {
   background-color: #f9f9f9;
   width: 280px;
@@ -105,6 +123,7 @@ a:hover {
   right: 0px;
   /* Adjust the value to position the dropdown */
 }
+
 .menuOnLeft2 {
   background-color: #f9f9f9;
   width: 280px;
@@ -113,6 +132,7 @@ a:hover {
   right: 100px;
   /* Adjust the value to position the dropdown */
 }
+
 .closeBtn {
   font-size: 25px;
   color: black;
@@ -127,11 +147,13 @@ a:hover {
     #f9e0b014 82.88%
   );
 }
+
 @media (min-width: 375px) {
   .productHeading ul {
     flex-direction: column;
   }
 }
+
 /* login */
 img {
   margin: 0 auto;
@@ -139,5 +161,12 @@ img {
   margin-top: 20%;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
