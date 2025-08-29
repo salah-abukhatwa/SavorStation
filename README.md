@@ -12,16 +12,16 @@ SavorStation is a simple e-commerce web application built with Angular, Firebase
 
 - **Responsive UI**: Designed with Angular Bootstrap for a clean and user-friendly experience.
 
-## Code scaffolding
+## Technologies
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular (Frontend framework).
+- Firebase (Authentication & Cloud Firestore database).
+- Angular Bootstrap (UI components & styling)
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
 
+## version
 
 This project was generated with [Angular CLI] version 17.0.7.
 
