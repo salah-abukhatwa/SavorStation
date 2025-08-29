@@ -1,10 +1,16 @@
 # SavorStation
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.7.
+SavorStation is a simple e-commerce web application built with Angular, Firebase, and Bootstrap. It allows authenticated users to browse, add, update, and delete products, as well as filter them by category. The app integrates Cloud Firestore for storing products and authentication.
 
-## Development server
+## Key Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+-**Authentication**: Sign up and log in with Firebase Authentication.
+
+-**Product Management**: Add, edit, and delete products with details such as name, price, image, and category.
+
+-**Product Listing**: Browse available products with filtering by categories.
+
+-**Responsive UI**: Designed with Angular Bootstrap for a clean and user-friendly experience.
 
 ## Code scaffolding
 
@@ -16,12 +22,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+This project was generated with [Angular CLI] version 17.0.7.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
