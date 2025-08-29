@@ -4,13 +4,13 @@ SavorStation is a simple e-commerce web application built with Angular, Firebase
 
 ## Key Features
 
--**Authentication**: Sign up and log in with Firebase Authentication.
+- **Authentication**: Sign up and log in with Firebase Authentication.
 
--**Product Management**: Add, edit, and delete products with details such as name, price, image, and category.
+- **Product Management**: Add, edit, and delete products with details such as name, price, image, and category.
 
--**Product Listing**: Browse available products with filtering by categories.
+- **Product Listing**: Browse available products with filtering by categories.
 
--**Responsive UI**: Designed with Angular Bootstrap for a clean and user-friendly experience.
+- **Responsive UI**: Designed with Angular Bootstrap for a clean and user-friendly experience.
 
 ## Code scaffolding
 
