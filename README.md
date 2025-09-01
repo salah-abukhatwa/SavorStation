@@ -2,7 +2,7 @@
 
 SavorStation is a simple e-commerce web application built with Angular, Firebase, and Bootstrap. It allows authenticated users to browse, add, update, and delete products, as well as filter them by category. The app integrates Cloud Firestore for storing products and authentication.
 
-**Live Demo:** [https://fitverse-4f9f7.web.app](https://savorstation-6f16d.web.app)
+**Live Demo:** [https://savorstation-6f16d.web.app/](https://savorstation-6f16d.web.app)
 
 ## Key Features
 
