@@ -131,11 +131,17 @@
     height: 45px;
     font-size: 15px;
   }
+  .login-parent {
+    background-image: url(../../../../../assets/image/mobile.jpg);
+  }
 }
 
 @media (max-width: 480px) {
   .login-wrapper {
     width: 95%;
     padding: 20px 15px;
+  }
+  .login-parent {
+    background-image: url(../../../../../assets/image/mobile.jpg);
   }
 }
