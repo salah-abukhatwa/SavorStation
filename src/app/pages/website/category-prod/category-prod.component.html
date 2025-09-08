@@ -1,40 +1,37 @@
-<div class="container-fluid py-5">
+<div class="container-fluid py-5 bg-light">
   <div class="container py-5">
+    <!-- Title -->
     <div class="text-center mx-auto mb-5" style="max-width: 700px">
-      <h1 class="display-4">Bestseller Products</h1>
-      <p>
-        Latin words, combined with a handful of model sentence structures, to
-        generate Lorem Ipsum which looks reasonable.
-      </p>
+      <h1 class="display-4 fw-bold">Category Products</h1>
+      <p class="text-muted">Explore products from your selected category.</p>
     </div>
+
+    <!-- Products Grid -->
     <div class="row g-4">
-      <div class="col-lg-6 col-xl-4" *ngFor="let product of products">
-        <div class="p-4 rounded bg-light">
-          <div class="row align-items-center">
-            <div class="col-6">
-              <img
-                [src]="product.productImageUrl"
-                class="img-fluid rounded-circle w-100"
-                alt=""
-              />
+      <div class="col-12 col-md-6 col-xl-4" *ngFor="let product of products">
+        <div class="card product-card shadow-sm border-0 h-100">
+          <div class="card-body text-center d-flex flex-column">
+            <img
+              [src]="product.productImageUrl"
+              class="product-img mb-3"
+              alt="{{ product.productShortName }}"
+            />
+            <h5 class="card-title fw-bold">{{ product.productShortName }}</h5>
+            <div class="mb-2">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star-half-alt text-warning"></i>
             </div>
-            <div class="col-6">
-              <a href="#" class="h5">{{ product.productShortName }}</a>
-              <div class="d-flex my-3">
-                <i class="fas fa-star text-primary"></i>
-                <i class="fas fa-star text-primary"></i>
-                <i class="fas fa-star text-primary"></i>
-                <i class="fas fa-star text-primary"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4 class="mb-3">{{ product.productPrice }} $</h4>
-              <a
-                href="#"
-                class="btn border border-secondary rounded-pill px-3 text-primary"
-                ><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-                cart</a
-              >
-            </div>
+            <h4 class="text-primary fw-bold mb-3">
+              {{ product.productPrice | currency : "USD" : "symbol" : "1.0-0" }}
+            </h4>
+            <button
+              class="btn btn-outline-primary rounded-pill d-flex align-items-center justify-content-center gap-2 mx-auto"
+            >
+              <i class="fa fa-shopping-bag"></i> Add to Cart
+            </button>
           </div>
         </div>
       </div>

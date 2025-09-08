@@ -9,7 +9,7 @@ import { ProductService } from '../../../services/product/product.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './category-prod.component.html',
-  styleUrl: './category-prod.component.css',
+  styleUrls: ['./category-prod.component.css'],
 })
 export class CategoryProdComponent implements OnInit {
   activeCategoryId: number = 12;

@@ -10,7 +10,7 @@ import { ProductService } from '../../../services/product/product.service';
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './web-products.component.html',
-  styleUrl: './web-products.component.css',
+  styleUrls: ['./web-products.component.css'],
 })
 export class WebProductsComponent {
   productList: Product[] = [];
