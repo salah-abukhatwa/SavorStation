@@ -11,7 +11,7 @@ import { AuthService } from '../../admin/auth/auth.service';
   standalone: true,
   imports: [CommonModule, RouterLink, RouterOutlet],
   templateUrl: './landing.component.html',
-  styleUrl: './landing.component.css',
+  styleUrls: ['./landing.component.css'],
 })
 export class LandingComponent implements OnInit {
   productList: Product[] = [];

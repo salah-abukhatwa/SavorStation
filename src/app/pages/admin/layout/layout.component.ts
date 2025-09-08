@@ -7,7 +7,7 @@ import { AuthService } from '../auth/auth.service';
   standalone: true,
   imports: [RouterOutlet, RouterLink],
   templateUrl: './layout.component.html',
-  styleUrl: './layout.component.css',
+  styleUrls: ['./layout.component.css'],
 })
 export class LayoutComponent {
   constructor(private authService: AuthService, private router: Router) {}

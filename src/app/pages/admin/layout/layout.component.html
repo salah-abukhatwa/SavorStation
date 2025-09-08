@@ -1,58 +1,63 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand">SavorStation</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="/products">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/category">Category</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/shop">Shop</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="cursor: pointer" (click)="logout()"
-            >Logout</a
-          >
-        </li>
+<header>
+  <nav class="navbar navbar-expand-lg border-bottom p-0">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand fw-bold">
+        <i class="fa fa-cart-shopping me-1"></i>
+        SavorStation
+      </a>
 
-        <!-- <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li> -->
-        <!-- <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li> -->
-      </ul>
+      <!-- Mobile Toggler -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Nav Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link text-uppercase home-link" routerLink="/products">
+              Home
+            </a>
+          </li>
+
+          <!-- Category -->
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" routerLink="/category">
+              Category
+            </a>
+          </li>
+
+          <!-- Shop -->
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" routerLink="/shop"> Shop </a>
+          </li>
+
+          <!-- Logout -->
+          <li class="nav-item">
+            <a
+              class="nav-link text-uppercase logout-link"
+              style="cursor: pointer"
+              (click)="logout()"
+            >
+              Logout
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>
+
 <div class="container-fluid">
   <router-outlet></router-outlet>
 </div>

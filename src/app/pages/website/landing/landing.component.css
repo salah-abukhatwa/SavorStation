@@ -1,0 +1,30 @@
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
+/* Links عامة */
+.nav-link {
+  color: var(--dark-text) !important;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--secondary-color) !important;
+}
+
+/* Home link */
+.home-link {
+  color: var(--secondary-color) !important;
+}
+
+/* Logout link */
+.logout-link {
+  color: var(--dark-text) !important;
+}
+
+.logout-link:hover {
+  color: var(--danger-color) !important;
+}

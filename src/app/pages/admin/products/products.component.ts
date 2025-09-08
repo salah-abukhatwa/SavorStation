@@ -12,7 +12,7 @@ import { Category } from '../../../models/category.model';
   standalone: true,
   imports: [CommonModule, FormsModule, FirestoreModule],
   templateUrl: './products.component.html',
-  styleUrl: './products.component.css',
+  styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
   isSidePanelVisible: boolean = false;
