@@ -1,14 +1,16 @@
-<div class="parent">
-  <div class="wrapper">
+<div class="login-parent">
+  <div class="login-wrapper">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div *ngIf="errorMessage" class="error-message">
         {{ errorMessage }}
       </div>
-      <h1>Register</h1>
 
+      <h1 class="login-title">Register</h1>
+
+      <!-- Username -->
       <div class="input-box">
         <input
-          type="username"
+          type="text"
           placeholder="Username"
           formControlName="username"
           (blur)="form.get('username')?.markAsTouched()"
@@ -24,12 +26,12 @@
         </div>
       </div>
 
+      <!-- Email -->
       <div class="input-box">
         <input
           type="email"
           placeholder="Your email"
           formControlName="email"
-          required
           (blur)="form.get('email')?.markAsTouched()"
         />
         <div
@@ -51,11 +53,12 @@
         </div>
       </div>
 
+      <!-- Password -->
       <div class="input-box">
         <input
+          type="password"
           placeholder="Your password"
           formControlName="password"
-          required
           (blur)="form.get('password')?.markAsTouched()"
         />
         <div
@@ -78,26 +81,24 @@
         </div>
       </div>
 
-      <!-- <div class="checkbox1">
-        <label
-          ><input type="checkbox" required />I agree to terms &
-          conditions</label
-        >
-      </div> -->
-
+      <!-- Register Button -->
       <button
-        *ngIf="!isLoading"
         type="submit"
-        class="btn"
-        [disabled]="form.invalid"
+        [disabled]="form.invalid || isLoading"
+        class="btn-login"
+        *ngIf="!isLoading"
       >
         Register
       </button>
+      <mat-spinner *ngIf="isLoading" class="spinner"></mat-spinner>
 
+      <!-- Login Link -->
       <div class="link">
-        <p>Already have an account? <a routerLink="/login">Login</a></p>
+        <p>
+          Already have an account?
+          <a routerLink="/login">Login</a>
+        </p>
       </div>
-      <mat-spinner *ngIf="isLoading"></mat-spinner>
     </form>
   </div>
 </div>

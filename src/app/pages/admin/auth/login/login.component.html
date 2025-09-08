@@ -1,19 +1,18 @@
-<div class="parent">
-  <div class="wrapper">
+<div class="login-parent">
+  <div class="login-wrapper">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div *ngIf="errorMessage" class="error-message">
         {{ errorMessage }}
       </div>
-      <h1>Login</h1>
 
+      <h1 class="login-title">Login</h1>
+
+      <!-- Email -->
       <div class="input-box">
         <input
           type="email"
           placeholder="Your email"
           formControlName="email"
-          type="text"
-          required
-          matInput
           (blur)="loginForm.get('email')?.markAsTouched()"
         />
         <div
@@ -36,11 +35,12 @@
         </div>
       </div>
 
+      <!-- Password -->
       <div class="input-box">
         <input
+          type="password"
           placeholder="Your password"
           formControlName="password"
-          required
           (blur)="loginForm.get('password')?.markAsTouched()"
         />
         <div
@@ -63,21 +63,18 @@
         </div>
       </div>
 
-      <!-- <div class="checkbox1">
-        <label><input type="checkbox" />Remember Me</label>
-      </div> -->
-
+      <!-- Login Button -->
       <button
-        type="button"
         type="submit"
-        [disabled]="loginForm.invalid"
-        class="btn"
+        [disabled]="loginForm.invalid || isLoading"
+        class="btn-login"
         *ngIf="!isLoading"
       >
         Login
       </button>
-      <mat-spinner *ngIf="isLoading"></mat-spinner>
+      <mat-spinner *ngIf="isLoading" class="spinner"></mat-spinner>
 
+      <!-- Register Link -->
       <div class="link">
         <p>
           Don't have an account?
@@ -87,6 +84,3 @@
     </form>
   </div>
 </div>
-
-<a routerLink="/signup">Register</a>
-<mat-spinner *ngIf="isLoading"></mat-spinner>
